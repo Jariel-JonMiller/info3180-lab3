@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <h1>Contact Form</h1>
+    <p>Fill in this form to contact the site owners.</p>
+    <form method="POST" action="/">
+        {{ form.hidden_tag() }}        
+        <div>
+            {{ form.name.label }}
+            {% if form.name.errors %}
+                <p>{{ form.name.errors[0] }}</p>
+            {% else %}
+                <p>Please enter your full name.</p>
+            {% endif %}
+            {{ form.name(size=20) }}
+        </div>
+        <div>
+            {{ form.email.label }}
+            {% if form.email.errors %}
+                <p>{{ form.email.errors[0] }}</p>
+            {% else %}
+                <p>Please enter your e-mail address.</p>
+            {% endif %}
+            {{ form.email(size=100) }}
+        </div>
+        <div>
+            {{ form.subject.label }}
+            {% if form.subject.errors %}
+                <p>{{ form.subject.errors[0] }}</p>
+            {% else %}
+                <p>Please enter the subject of your message.</p>
+            {% endif %}
+            {{ form.subject(size=41) }}
+        </div>
+        <div>
+            {{ form.message.label }}
+            {% if form.message.errors %}
+                <p>{{ form.message.errors[0] }}</p>
+            {% else %}
+                <p>Please enter the message you would like to send.</p>
+            {% endif %}
+            {{ form.message(size=100) }}
+        </div>
+
+        <button type="submit">Send</button>
+    </form>
+    
+{% endblock %}

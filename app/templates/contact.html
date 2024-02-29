@@ -3,8 +3,8 @@
 {% block main %}
     <h1>Contact Form</h1>
     <p>Fill in this form to contact the site owners.</p>
-    <form method="POST" action="/">
-        {{ form.hidden_tag() }}        
+    <form action="/contact" method="post" enctype="multipart/form-data">
+        {{ form.csrf_token }}        
         <div>
             {{ form.name.label }}
             {% if form.name.errors %}

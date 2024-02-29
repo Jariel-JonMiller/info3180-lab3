@@ -1,7 +1,7 @@
 from app import app
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, url_for, flash
 from app.forms import ContactForm
-from app import Mail 
+from app import mail 
 from flask_mail import Message
 
 ###
@@ -13,7 +13,7 @@ def home():
     """Render website's home page."""
     return render_template('home.html')
 
-@app.route('/contact', methods=['GET', 'POST'])
+@app.route('/contact', methods=['POST', 'GET'])
 def contact():
     """Render website's contact page."""
 
@@ -26,17 +26,19 @@ def contact():
             subject = myform.subject.data
             message = myform.message.data
 
-            msg = Message("HELLO USER", 
-            sender=("Harry", ), 
-            recipients=[email]) 
-            msg.body = 'This is the body of the message' 
-            Mail.send(msg) 
-
+            msg = Message(subject, 
+            sender = (name, email), 
+            recipients = ["to@example.com"]) 
+            msg.body = message 
+            mail.send(msg) 
 
             flash('You have successfully filled out the form', 'success')
-            return redirect('/')
+            return redirect(url_for('home'))
 
-        flash_errors(myform)
+        else:
+            flash_errors(myform)
+            return render_template('contact.html', form=myform)
+    
     return render_template('contact.html', form=myform)
 
 @app.route('/about/')

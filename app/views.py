@@ -32,7 +32,7 @@ def contact():
             msg.body = message 
             mail.send(msg) 
 
-            flash('You have successfully filled out the form', 'success')
+            flash(' You have successfully filled out the form! ', 'success')
             return redirect(url_for('home'))
 
         else:

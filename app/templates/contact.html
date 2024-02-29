@@ -5,25 +5,25 @@
     <p>Fill in this form to contact the site owners.</p>
     <form action="/contact" method="post" enctype="multipart/form-data">
         {{ form.csrf_token }}        
-        <div>
+        <div class="form-items">
             {{ form.name.label }}
             {% if form.name.errors %}
                 <p>{{ form.name.errors[0] }}</p>
             {% else %}
                 <p>Please enter your full name.</p>
             {% endif %}
-            {{ form.name(size=20) }}
+            {{ form.name(size=41) }}
         </div>
-        <div>
+        <div class="form-items">
             {{ form.email.label }}
             {% if form.email.errors %}
                 <p>{{ form.email.errors[0] }}</p>
             {% else %}
                 <p>Please enter your e-mail address.</p>
             {% endif %}
-            {{ form.email(size=100) }}
+            {{ form.email(size=41) }}
         </div>
-        <div>
+        <div class="form-items">
             {{ form.subject.label }}
             {% if form.subject.errors %}
                 <p>{{ form.subject.errors[0] }}</p>
@@ -32,14 +32,14 @@
             {% endif %}
             {{ form.subject(size=41) }}
         </div>
-        <div>
+        <div class="form-items">
             {{ form.message.label }}
             {% if form.message.errors %}
                 <p>{{ form.message.errors[0] }}</p>
             {% else %}
                 <p>Please enter the message you would like to send.</p>
             {% endif %}
-            {{ form.message(size=100) }}
+            {{ form.message(size=41) }}
         </div>
 
         <button type="submit">Send</button>

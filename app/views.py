@@ -44,7 +44,7 @@ def contact():
 @app.route('/about/')
 def about():
     """Render the website's about page."""
-    return render_template('about.html', name="amry jane")
+    return render_template('about.html', name="Jariel-Jon Miller")
 
 
 ###
